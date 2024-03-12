@@ -9,14 +9,11 @@ with open(CONFIG_FILE) as configFile:
 if(len(servers) < 0):
     raise Exception("There are no servers in the file: " + CONFIG_FILE)
 
-requestUrl = servers[0]['host'] + ":" + str(servers[0]['port']) + "/servicesNS/-/-/saved/searches"
-
 body = {}
 body["output_mode"] = "json"
 
-print(requestUrl)
+for server in servers:
+    requestDashboards = server['host'] + ":" + str(server['port']) + "/servicesNS/-/-/data/ui/views"
+    response = requests.get(url=requestDashboards, auth=(servers[0]['user'], servers[0]['password']), data=body, verify=False).json()
 
-response = requests.get(url=requestUrl, auth=(servers[0]['user'], servers[0]['password']), data=body, verify=False)
-
-
-print(response.json())
+    print(response['entry'][0])
