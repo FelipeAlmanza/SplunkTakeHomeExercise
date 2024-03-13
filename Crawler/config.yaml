@@ -1,5 +1,5 @@
 servers:
-  - local:
+  - hostname: local
     host: https://localhost
     port: 8089
     user: felipe
