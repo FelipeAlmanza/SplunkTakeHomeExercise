@@ -1,0 +1,3 @@
+client: mongodb://localhost:27017
+database : Splunk
+collection : Object_Field
