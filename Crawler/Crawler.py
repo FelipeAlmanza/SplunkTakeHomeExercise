@@ -2,7 +2,7 @@ import requests, yaml, pymongo
 
 CONFIG_FILE = "./config.yaml"
 
-DB_CONFIG = "../dbconfig.yaml"
+DB_CONFIG = "../Database/dbconfig.yaml"
 
 body = {}
 body["output_mode"] = "json"
