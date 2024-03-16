@@ -1,7 +1,8 @@
 from collections import defaultdict
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Response
 from flask_pymongo import PyMongo
 import yaml
+from bson import json_util
 
 DB_CONFIG = "../Database/dbconfig.yaml"
 
@@ -31,6 +32,33 @@ def get_overview():
 
     return response
 
+# /list?type=
+@app.route('/list', methods=["GET"])
+def get_list():
+    objectType = request.args.get("type")
+
+    if objectType == None:
+        return "Empty type, please add a type"
+    elif objectType == "all":
+        objects = mongo.db[dbConfig["collection"]].find()
+    else:
+        # Find by type
+        objects = mongo.db[dbConfig["collection"]].find({"type" : objectType.capitalize()})
+
+    response = json_util.dumps(objects)
+    return Response(response, mimetype = "application/json")
+
+# /search?q=
+@app.route('/search')
+def search():
+    searchText = request.args.get("q")
+
+    if searchText == None:
+        return "No text search specified"
+    
+    # TODO: SEARCH on db.
+
+    return "SEARCH"
 
 @app.errorhandler(404)
 def not_found(error=None):
