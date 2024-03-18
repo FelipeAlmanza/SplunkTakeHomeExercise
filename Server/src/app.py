@@ -2,7 +2,7 @@ from collections import defaultdict
 from flask import Flask, request, jsonify, Response
 from flask_pymongo import PyMongo
 import yaml
-from bson import json_util
+from bson import ObjectId, json_util
 
 DB_CONFIG = "../Database/dbconfig.yaml"
 
@@ -49,7 +49,7 @@ def get_list():
     return Response(response, mimetype = "application/json")
 
 # /search?q=
-@app.route('/search')
+@app.route('/search', methods=["GET"])
 def search():
     searchText = request.args.get("q")
 
@@ -59,6 +59,42 @@ def search():
     # TODO: SEARCH on db.
 
     return "SEARCH"
+
+# /add?type
+# type: meta-tag or classification
+# Body: 
+# {
+#     "id" : "_id",
+#     "value" : ["a", "b", ...] if meta tag or "classification_type"
+# }
+@app.route('/add', methods=["POST"])
+def add_field():
+    type = request.args.get("type")
+
+    if type == None:
+        return "Missing type argument"
+
+    body = request.json
+    id = body["id"]
+    value = body["value"]
+    
+    if id:
+        if type == "meta-tag":
+            updateId = mongo.db[dbConfig["collection"]].update_one({"_id" : ObjectId(id)}, {"$set" : {
+                "custom_meta_labels" : value
+            }})
+            return "Updated element with id " + str(updateId)
+        elif type == "classification":
+            updateId = mongo.db[dbConfig["collection"]].update_one({"_id" : ObjectId(id)}, {"$set" : {
+                "custom_classification" : value
+            }})
+            return "Updated element with id " + str(updateId)
+        else:
+            return "Type does not exist"
+    
+    else:
+        return "Missing id."
+
 
 @app.errorhandler(404)
 def not_found(error=None):
