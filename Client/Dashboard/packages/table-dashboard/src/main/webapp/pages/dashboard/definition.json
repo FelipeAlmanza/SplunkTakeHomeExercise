@@ -1,0 +1,178 @@
+{
+    "visualizations": {
+        "viz_HTax1jMU": {
+            "type": "splunk.table",
+            "dataSources": {
+                "primary": "ds_test"
+            },
+            "title": "Default Table from Splunk Visualizations",
+            "description": "Static Data for User Logins"
+        },
+        "viz_GdqnufJw": {
+            "type": "splunk.rectangle",
+            "options": {
+            }
+        },
+        "viz_QOgtt0Bp": {
+            "type": "splunk.markdown",
+            "options": {
+                "markdown": "## Adding Custom Components to Dashboards "
+            }
+        },
+        "viz_aZS6Z1Gu": {
+            "type": "splunk.markdown",
+            "options": {
+                "markdown": "This dashboard displays both a regular Splunk Table Visualization on the left, and a table made by using a custom Splunk UI component on the right added to the dashboard by making a custom visualization."
+            }
+        },
+        "viz_6hGmfpvq": {
+            "type": "splunk.markdown",
+            "options": {
+                "markdown": "**Custom visualization using Splunk UI and Visualizations Library**\n\nStatic Data for User Logins\n\n"
+            }
+        }
+    },
+    "dataSources": {
+        "ds_test": {
+            "type": "ds.test",
+            "options": {
+                "data": {
+                    "fields": [
+                        {
+                            "name": "User"
+                        },
+                        {
+                            "name": "Total Logins"
+                        },
+                        {
+                            "name": "Logins Last Week"
+                        }
+                    ],
+                    "columns": [
+                        [
+                            "userA",
+                            "userB",
+                            "userC",
+                            "userD"
+                        ],
+                        [
+                            "10",
+                            "20",
+                            "30",
+                            "40"
+                        ],
+                        [
+                            [
+                                "##__SPARKLINE__##",
+                                "1",
+                                "0",
+                                "0",
+                                "2",
+                                "3",
+                                "4",
+                                "0"
+                            ],
+                            [
+                                "##__SPARKLINE__##",
+                                "0",
+                                "4",
+                                "2",
+                                "5",
+                                "3",
+                                "6",
+                                "0"
+                            ],
+                            [
+                                "##__SPARKLINE__##",
+                                "5",
+                                "2",
+                                "5",
+                                "4",
+                                "6",
+                                "2",
+                                "6"
+                            ],
+                            [
+                                "##__SPARKLINE__##",
+                                "7",
+                                "5",
+                                "8",
+                                "6",
+                                "6",
+                                "8",
+                                "10"
+                            ]
+                        ]
+                    ]
+                }
+            }
+        }
+    },
+    "defaults": {},
+    "inputs": {},
+    "layout": {
+        "type": "absolute",
+        "options": {
+            "display": "auto-scale",
+            "width": 1440,
+            "height": 1024,
+            "backgroundColor": "#000000"
+        },
+        "structure": [
+            {
+                "item": "viz_HTax1jMU",
+                "type": "block",
+                "position": {
+                    "x": 30,
+                    "y": 140,
+                    "w": 630,
+                    "h": 330
+                }
+            },
+            {
+                "item": "viz_GdqnufJw",
+                "type": "block",
+                "position": {
+                    "x": 720,
+                    "y": 190,
+                    "w": 630,
+                    "h": 270
+                }
+            },
+            {
+                "item": "viz_QOgtt0Bp",
+                "type": "block",
+                "position": {
+                    "x": 20,
+                    "y": 0,
+                    "w": 630,
+                    "h": 90
+                }
+            },
+            {
+                "item": "viz_aZS6Z1Gu",
+                "type": "block",
+                "position": {
+                    "x": 20,
+                    "y": 70,
+                    "w": 1380,
+                    "h": 40
+                }
+            },
+            {
+                "item": "viz_6hGmfpvq",
+                "type": "block",
+                "position": {
+                    "x": 720,
+                    "y": 120,
+                    "w": 1380,
+                    "h": 70
+                }
+            }
+        ],
+        "globalInputs": []
+    },
+    "description": "",
+    "title": "Custom Components Dashboard"
+}
+
