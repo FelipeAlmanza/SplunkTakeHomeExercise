@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<view template="custom-app:/templates/DataInventory.html" type="html">
+	<label>Data Inventory</label>
+</view>

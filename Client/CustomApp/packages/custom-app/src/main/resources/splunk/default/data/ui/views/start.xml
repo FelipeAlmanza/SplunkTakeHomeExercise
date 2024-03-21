@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<view template="custom-app:/templates/start.html" type="html">
+	<label>Overview</label>
+</view>

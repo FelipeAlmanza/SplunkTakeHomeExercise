@@ -1,0 +1,5 @@
+<nav>
+  <view name="start" default="true"/>
+  <view name="KOs"/>
+  <view name="DataInventory"/>
+</nav>
