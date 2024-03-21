@@ -17,6 +17,38 @@ Crawler process to extract certain objects from several Splunk servers, such as:
 
 Data is stored in a MongoDB database.
 
+## Server
+
+Deployed in Flask.
+
+### Endpoints
+
+- /
+  - Method: GET
+  - Index page
+- /overview
+
+  - Method: GET
+  - Returns an JSON array with all the object types and the number of that type (count)
+
+- /list?type=
+
+  - Method: GET
+  - List of type or get all by using type all
+
+- /add
+
+  - Method: POST
+  - type: meta-tag or classification
+  - Body:
+
+    {
+    "id" : "\_id",
+    "value" : ["a", "b", ...] if meta tag or "classification_type"
+    }
+
+- / Method: GET -> index
+
 ## Client
 
 ### Had to downgrade Webpack
