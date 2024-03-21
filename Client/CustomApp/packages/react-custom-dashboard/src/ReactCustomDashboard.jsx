@@ -10,7 +10,7 @@ const ReactCustomDashboard = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:5000/overview', mode);
+                const response = await fetch('http://127.0.0.1:5000/overview');
                 const result = await response.json();
                 setData(result);
             } catch (error) {
