@@ -13,6 +13,12 @@ Crawler process to extract certain objects from several Splunk servers, such as:
 - Fields
 - Saved Searches or Reports
 
+Dependencies:
+
+- requests
+- yaml
+- pymongo
+
 ## Storage
 
 Data is stored in a MongoDB database.
@@ -20,6 +26,14 @@ Data is stored in a MongoDB database.
 ## Server
 
 Deployed in Flask.
+
+Dependencies:
+
+- flask
+- flask_pymongo
+- flask_cors
+- yaml
+- bson
 
 ### Endpoints
 
